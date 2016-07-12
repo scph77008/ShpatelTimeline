@@ -1,0 +1,21 @@
+TimelineBundle\Entity\Event:
+    type: entity
+    table: null
+    repositoryClass: TimelineBundle\Repository\EventRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        cat:
+            type: integer
+        time:
+            type: time
+        photo:
+            type: string
+            length: 255
+        description:
+            type: text
+    lifecycleCallbacks: {  }

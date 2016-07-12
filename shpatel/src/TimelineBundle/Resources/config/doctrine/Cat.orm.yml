@@ -1,0 +1,18 @@
+TimelineBundle\Entity\Cat:
+    type: entity
+    table: null
+    repositoryClass: TimelineBundle\Repository\CatRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        photo:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

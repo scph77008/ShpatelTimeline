@@ -18,14 +18,9 @@ class Cat
     private $name;
 
     /**
-     * @var int
-     */
-    private $weight;
-
-    /**
      * @var string
      */
-    private $avatar;
+    private $photo;
 
 
     /**
@@ -63,51 +58,26 @@ class Cat
     }
 
     /**
-     * Set weight
+     * Set photo
      *
-     * @param integer $weight
+     * @param string $photo
      *
      * @return Cat
      */
-    public function setWeight($weight)
+    public function setPhoto($photo)
     {
-        $this->weight = $weight;
+        $this->photo = $photo;
 
         return $this;
     }
 
     /**
-     * Get weight
-     *
-     * @return int
-     */
-    public function getWeight()
-    {
-        return $this->weight;
-    }
-
-    /**
-     * Set avatar
-     *
-     * @param string $avatar
-     *
-     * @return Cat
-     */
-    public function setAvatar($avatar)
-    {
-        $this->avatar = $avatar;
-
-        return $this;
-    }
-
-    /**
-     * Get avatar
+     * Get photo
      *
      * @return string
      */
-    public function getAvatar()
+    public function getPhoto()
     {
-        return $this->avatar;
+        return $this->photo;
     }
 }
-

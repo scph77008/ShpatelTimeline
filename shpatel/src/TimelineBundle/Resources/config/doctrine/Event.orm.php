@@ -3,7 +3,7 @@
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 
 $metadata->setInheritanceType(ClassMetadataInfo::INHERITANCE_TYPE_NONE);
-$metadata->customRepositoryClassName = 'TimelineBundle\Repository\CatRepository';
+$metadata->customRepositoryClassName = 'TimelineBundle\Repository\EventRepository';
 $metadata->setChangeTrackingPolicy(ClassMetadataInfo::CHANGETRACKING_DEFERRED_IMPLICIT);
 $metadata->mapField(array(
    'fieldName' => 'id',
@@ -12,20 +12,18 @@ $metadata->mapField(array(
    'columnName' => 'id',
   ));
 $metadata->mapField(array(
-   'columnName' => 'name',
-   'fieldName' => 'name',
-   'type' => 'string',
-   'length' => 255,
+   'columnName' => 'time',
+   'fieldName' => 'time',
+   'type' => 'time',
   ));
 $metadata->mapField(array(
-   'columnName' => 'weight',
-   'fieldName' => 'weight',
-   'type' => 'integer',
-   'nullable' => true,
+   'columnName' => 'description',
+   'fieldName' => 'description',
+   'type' => 'text',
   ));
 $metadata->mapField(array(
-   'columnName' => 'avatar',
-   'fieldName' => 'avatar',
+   'columnName' => 'photo',
+   'fieldName' => 'photo',
    'type' => 'string',
    'length' => 255,
   ));
