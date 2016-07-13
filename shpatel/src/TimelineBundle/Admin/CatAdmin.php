@@ -5,21 +5,61 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-
 class CatAdmin extends AbstractAdmin
 {
+	/**
+	 * Конфигурация формы редактирования записи
+	 *
+	 * @param \Sonata\AdminBundle\Form\FormMapper $formMapper
+	 */
 	protected function configureFormFields(FormMapper $formMapper)
 	{
-		$formMapper->add('name', 'text');
+		$formMapper
+			->add('name', 'text', ['label' => 'Имя'])
+			->add('file', 'file', ['label' => 'Фото', 'required' => false])
+			->add('datebirth', 'date', ['label' => 'Дата рождения']);
 	}
 
+	/**
+	 * Поля, по которым производится поиск в списке записей
+	 *
+	 * @param \Sonata\AdminBundle\Datagrid\DatagridMapper $datagridMapper
+	 */
 	protected function configureDatagridFilters(DatagridMapper $datagridMapper)
 	{
-		$datagridMapper->add('name');
+		$datagridMapper
+			->add('name')
+			->add('photo');
 	}
 
+	/**
+	 * Конфигурация списка записей
+	 *
+	 * @param \Sonata\AdminBundle\Datagrid\ListMapper $listMapper
+	 */
 	protected function configureListFields(ListMapper $listMapper)
 	{
-		$listMapper->addIdentifier('name');
+		$listMapper
+			->addIdentifier('name')
+			->addIdentifier('photo');
+	}
+
+	/* Загрузка файла */
+	public function prePersist($image)
+	{
+		$this->manageFileUpload($image);
+	}
+
+	public function preUpdate($image)
+	{
+		$this->manageFileUpload($image);
+	}
+
+	private function manageFileUpload($image)
+	{
+		if ($image->getFile())
+		{
+			$image->refreshUpdated();
+		}
 	}
 }

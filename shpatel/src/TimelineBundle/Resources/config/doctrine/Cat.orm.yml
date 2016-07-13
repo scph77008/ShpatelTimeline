@@ -1,6 +1,6 @@
 TimelineBundle\Entity\Cat:
     type: entity
-    table: null
+    table: cat
     repositoryClass: TimelineBundle\Repository\CatRepository
     id:
         id:
@@ -17,7 +17,9 @@ TimelineBundle\Entity\Cat:
             length: 255
             nullable: true
         datebirth:
-            type: time
+            type: datetime
             nullable: true
 
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+      prePersist:   [ lifecycleFileUpload ]
+      preUpdate:    [ lifecycleFileUpload ]

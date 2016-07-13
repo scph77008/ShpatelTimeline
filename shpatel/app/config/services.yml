@@ -15,7 +15,7 @@ services:
 
     admin.event:
         class: TimelineBundle\Admin\EventAdmin
-        arguments: [~, TimelineBundle\Entity\Cat, ~]
+        arguments: [~, TimelineBundle\Entity\Event, ~]
         tags:
         - { name: sonata.admin, manager_type: orm, label: Событие }
 

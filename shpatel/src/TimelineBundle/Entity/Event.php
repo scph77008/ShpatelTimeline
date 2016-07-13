@@ -168,4 +168,3 @@ class Event
         return $this->weight;
     }
 }
-
