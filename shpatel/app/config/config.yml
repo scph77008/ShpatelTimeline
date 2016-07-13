@@ -68,6 +68,9 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+sonata_admin:
+   title: Котовья админка
+
 sonata_block:
     default_contexts: [cms]
     blocks:

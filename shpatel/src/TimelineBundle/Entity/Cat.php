@@ -8,7 +8,7 @@ namespace TimelineBundle\Entity;
 class Cat
 {
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
@@ -22,11 +22,16 @@ class Cat
      */
     private $photo;
 
+    /**
+     * @var \DateTime
+     */
+    private $datebirth;
+
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -80,4 +85,29 @@ class Cat
     {
         return $this->photo;
     }
+
+    /**
+     * Set datebirth
+     *
+     * @param \DateTime $datebirth
+     *
+     * @return Cat
+     */
+    public function setDatebirth($datebirth)
+    {
+        $this->datebirth = $datebirth;
+
+        return $this;
+    }
+
+    /**
+     * Get datebirth
+     *
+     * @return \DateTime
+     */
+    public function getDatebirth()
+    {
+        return $this->datebirth;
+    }
 }
+

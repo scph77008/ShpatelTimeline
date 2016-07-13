@@ -19,6 +19,6 @@ TimelineBundle\Entity\Event:
         description:
             type: text
         weight:
-            type: ineger
+            type: integer
 
     lifecycleCallbacks: {  }

@@ -15,4 +15,9 @@ TimelineBundle\Entity\Cat:
         photo:
             type: string
             length: 255
+            nullable: true
+        datebirth:
+            type: time
+            nullable: true
+
     lifecycleCallbacks: {  }

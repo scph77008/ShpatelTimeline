@@ -8,12 +8,12 @@ namespace TimelineBundle\Entity;
 class Event
 {
     /**
-     * @var int
+     * @var integer
      */
     private $id;
 
     /**
-     * @var int
+     * @var integer
      */
     private $cat;
 
@@ -33,9 +33,15 @@ class Event
     private $description;
 
     /**
+     * @var integer
+     */
+    private $weight;
+
+
+    /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -59,7 +65,7 @@ class Event
     /**
      * Get cat
      *
-     * @return int
+     * @return integer
      */
     public function getCat()
     {
@@ -137,20 +143,15 @@ class Event
     {
         return $this->description;
     }
-    /**
-     * @var ineger
-     */
-    private $weight;
-
 
     /**
      * Set weight
      *
-     * @param \ineger $weight
+     * @param integer $weight
      *
      * @return Event
      */
-    public function setWeight(\ineger $weight)
+    public function setWeight($weight)
     {
         $this->weight = $weight;
 
@@ -160,10 +161,11 @@ class Event
     /**
      * Get weight
      *
-     * @return \ineger
+     * @return integer
      */
     public function getWeight()
     {
         return $this->weight;
     }
 }
+
