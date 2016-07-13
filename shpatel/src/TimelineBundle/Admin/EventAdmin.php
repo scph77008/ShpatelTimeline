@@ -10,16 +10,23 @@ class EventAdmin extends AbstractAdmin
 {
 	protected function configureFormFields(FormMapper $formMapper)
 	{
-		$formMapper->add('name', 'text');
+		$formMapper->add('cat', 'choice',  array(
+			'choices' => array(
+				'kit1' => 'red',
+				'kit2' => 'green',
+				'kit3' => 'blue'
+			)
+		))
+		;
 	}
 
 	protected function configureDatagridFilters(DatagridMapper $datagridMapper)
 	{
-		$datagridMapper->add('name');
+		$datagridMapper->add('cat');
 	}
 
 	protected function configureListFields(ListMapper $listMapper)
 	{
-		$listMapper->addIdentifier('name');
+		$listMapper->addIdentifier('cat');
 	}
 }

@@ -37,6 +37,10 @@ class Event
      */
     private $weight;
 
+	/**
+	 * Unmapped property to handle file uploads
+	 */
+	private $file;
 
     /**
      * Get id
@@ -167,4 +171,62 @@ class Event
     {
         return $this->weight;
     }
+
+
+	/**
+	 * Sets file.
+	 *
+	 * @param   UploadedFile $file
+	 */
+	public function setFile(UploadedFile $file = null)
+	{
+		$this->file = $file;
+	}
+
+	/**
+	 * Get file.
+	 *
+	 * @return Uplo adedFile
+	 */
+	public function getFile()
+	{
+		return $this->file;
+	}
+
+	/**
+	 * Загружает файл из формы
+	 */
+	public function upload()
+	{
+		if (null === $this->getFile())
+		{
+			return;
+		}
+
+		// Сохраняем файл
+		$this->getFile()
+		     ->move(
+			     '/home/virtual/timeline.dev/www/shpatel/web/uploads/cats/' . $this->getId() . '/', //TODO: Разобраться с AppKernel->getRootDir()
+			     $this->getFile()
+			          ->getClientOriginalName()
+		     );
+
+		// Сохраняем путь
+		$this->setPhoto(
+			$this->getFile()
+			     ->getClientOriginalName()
+		);
+
+		// Очищаем файл
+		$this->setFile(null);
+	}
+
+	/**
+	 * Lifecycle callback to upload the file to the server
+	 */
+	public function lifecycleFileUpload()
+	{
+		$this->upload();
+	}
+
 }

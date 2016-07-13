@@ -1,6 +1,6 @@
 TimelineBundle\Entity\Event:
     type: entity
-    table: null
+    table: events
     repositoryClass: TimelineBundle\Repository\EventRepository
     id:
         id:
@@ -21,4 +21,6 @@ TimelineBundle\Entity\Event:
         weight:
             type: integer
 
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+      prePersist:   [ lifecycleFileUpload ]
+      preUpdate:    [ lifecycleFileUpload ]
