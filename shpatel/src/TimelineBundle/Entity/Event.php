@@ -32,7 +32,6 @@ class Event
      */
     private $description;
 
-
     /**
      * Get id
      *
@@ -137,5 +136,34 @@ class Event
     public function getDescription()
     {
         return $this->description;
+    }
+    /**
+     * @var ineger
+     */
+    private $weight;
+
+
+    /**
+     * Set weight
+     *
+     * @param \ineger $weight
+     *
+     * @return Event
+     */
+    public function setWeight(\ineger $weight)
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Get weight
+     *
+     * @return \ineger
+     */
+    public function getWeight()
+    {
+        return $this->weight;
     }
 }

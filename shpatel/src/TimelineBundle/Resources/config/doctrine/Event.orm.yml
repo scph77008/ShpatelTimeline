@@ -18,4 +18,7 @@ TimelineBundle\Entity\Event:
             length: 255
         description:
             type: text
+        weight:
+            type: ineger
+
     lifecycleCallbacks: {  }
