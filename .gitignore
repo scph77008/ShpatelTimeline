@@ -49,3 +49,6 @@
 # Backup entities generated with doctrine:generate:entities command
 */Entity/*~
 
+# Загруженные файлы
+/shpatel/web/uploads/*/*
+
