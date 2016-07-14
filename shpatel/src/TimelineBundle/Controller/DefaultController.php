@@ -7,7 +7,7 @@ use TimelineBundle\Entity\Cat;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function CatsAction()
     {
 	    /** @type Cat[] $cats */
 	    $cats = $this->getDoctrine()->getRepository('TimelineBundle:Cat')->findAll();
@@ -19,6 +19,11 @@ class DefaultController extends Controller
 	    }
 	    unset($cat);
 	   
-        return $this->render('TimelineBundle:Default:index.html.twig', ['cats' => $choices]);
+        return $this->render('TimelineBundle:Default:cats.html.twig', ['cats' => $choices]);
+    }  
+	
+	public function EventsAction()
+    {
+        return $this->render('TimelineBundle:Default:events.html.twig');
     }
 }

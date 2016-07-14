@@ -5,8 +5,12 @@ use Symfony\Component\Routing\Route;
 
 $collection = new RouteCollection();
 
-$collection->add('timeline_homepage', new Route('/', array(
-    '_controller' => 'TimelineBundle:Default:index',
+$collection->add('cats', new Route('/cats', array(
+    '_controller' => 'TimelineBundle:Default:Cats',
+)));
+
+$collection->add('events', new Route('/events', array(
+	'_controller' => 'TimelineBundle:Default:Events',
 )));
 
 return $collection;
