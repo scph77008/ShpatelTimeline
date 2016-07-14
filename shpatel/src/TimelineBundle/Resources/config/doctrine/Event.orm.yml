@@ -9,7 +9,7 @@ TimelineBundle\Entity\Event:
             generator:
                 strategy: AUTO
     fields:
-        cat:
+        catId:
             type: integer
         time:
             type: time

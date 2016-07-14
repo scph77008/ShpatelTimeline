@@ -5,6 +5,8 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use TimelineBundle\Entity\Cat;
+
 class CatAdmin extends AbstractAdmin
 {
 	/**
@@ -45,21 +47,31 @@ class CatAdmin extends AbstractAdmin
 	}
 
 	/* Загрузка файла */
-	public function prePersist($image)
+	
+	/**
+	 * @param Cat $cat
+	 */
+	public function prePersist($cat)
 	{
-		$this->manageFileUpload($image);
+		$this->manageFileUpload($cat);
 	}
 
-	public function preUpdate($image)
+	/**
+	 * @param Cat $cat
+	 */
+	public function preUpdate($cat)
 	{
-		$this->manageFileUpload($image);
+		$this->manageFileUpload($cat);
 	}
 
-	private function manageFileUpload($image)
+	/**
+	 * @param Cat $cat
+	 */
+	private function manageFileUpload($cat)
 	{
-		if ($image->getFile())
+		if ($cat->getFile())
 		{
-			$image->refreshUpdated();
+			$cat->upload();
 		}
 	}
 }

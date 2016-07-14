@@ -1,6 +1,6 @@
 TimelineBundle\Entity\Cat:
     type: entity
-    table: cat
+    table: cats
     repositoryClass: TimelineBundle\Repository\CatRepository
     id:
         id:

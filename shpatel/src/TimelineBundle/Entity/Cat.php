@@ -149,7 +149,8 @@ class Cat
 		// Сохраняем файл
 		$this->getFile()
 		     ->move(
-			     '/home/virtual/timeline.dev/www/shpatel/web/uploads/cats/' . $this->getId() . '/', //TODO: Разобраться с AppKernel->getRootDir()
+			     '/home/virtual/timeline.dev/www/shpatel/web/uploads/cats/' . $this->getId() . '/',
+			     //TODO: Разобраться с AppKernel->getRootDir()
 			     $this->getFile()
 			          ->getClientOriginalName()
 		     );
@@ -160,7 +161,7 @@ class Cat
 			     ->getClientOriginalName()
 		);
 
-		// Очищаем файл
+		// Забываем о файле
 		$this->setFile(null);
 	}
 

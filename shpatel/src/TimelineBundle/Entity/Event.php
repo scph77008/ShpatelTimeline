@@ -2,176 +2,177 @@
 
 namespace TimelineBundle\Entity;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 /**
  * Event
  */
 class Event
 {
-    /**
-     * @var integer
-     */
-    private $id;
+	/**
+	 * @var integer
+	 */
+	private $id;
 
-    /**
-     * @var integer
-     */
-    private $cat;
+	/**
+	 * @var integer
+	 */
+	private $catId;
 
-    /**
-     * @var \DateTime
-     */
-    private $time;
+	/**
+	 * @var \DateTime
+	 */
+	private $time;
 
-    /**
-     * @var string
-     */
-    private $photo;
+	/**
+	 * @var string
+	 */
+	private $photo;
 
-    /**
-     * @var string
-     */
-    private $description;
+	/**
+	 * @var string
+	 */
+	private $description;
 
-    /**
-     * @var integer
-     */
-    private $weight;
+	/**
+	 * @var integer
+	 */
+	private $weight;
 
 	/**
 	 * Unmapped property to handle file uploads
 	 */
 	private $file;
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+	/**
+	 * Get id
+	 *
+	 * @return integer
+	 */
+	public function getId()
+	{
+		return $this->id;
+	}
 
-    /**
-     * Set cat
-     *
-     * @param integer $cat
-     *
-     * @return Event
-     */
-    public function setCat($cat)
-    {
-        $this->cat = $cat;
+	/**
+	 * Set catId
+	 *
+	 * @param integer $catId
+	 *
+	 * @return Event
+	 */
+	public function setCatId($catId)
+	{
+		$this->catId = $catId;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get cat
-     *
-     * @return integer
-     */
-    public function getCat()
-    {
-        return $this->cat;
-    }
+	/**
+	 * Get catId
+	 *
+	 * @return integer
+	 */
+	public function getCatId()
+	{
+		return $this->catId;
+	}
 
-    /**
-     * Set time
-     *
-     * @param \DateTime $time
-     *
-     * @return Event
-     */
-    public function setTime($time)
-    {
-        $this->time = $time;
+	/**
+	 * Set time
+	 *
+	 * @param \DateTime $time
+	 *
+	 * @return Event
+	 */
+	public function setTime($time)
+	{
+		$this->time = $time;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get time
-     *
-     * @return \DateTime
-     */
-    public function getTime()
-    {
-        return $this->time;
-    }
+	/**
+	 * Get time
+	 *
+	 * @return \DateTime
+	 */
+	public function getTime()
+	{
+		return $this->time;
+	}
 
-    /**
-     * Set photo
-     *
-     * @param string $photo
-     *
-     * @return Event
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
+	/**
+	 * Set photo
+	 *
+	 * @param string $photo
+	 *
+	 * @return Event
+	 */
+	public function setPhoto($photo)
+	{
+		$this->photo = $photo;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get photo
-     *
-     * @return string
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
+	/**
+	 * Get photo
+	 *
+	 * @return string
+	 */
+	public function getPhoto()
+	{
+		return $this->photo;
+	}
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Event
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
+	/**
+	 * Set description
+	 *
+	 * @param string $description
+	 *
+	 * @return Event
+	 */
+	public function setDescription($description)
+	{
+		$this->description = $description;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
+	/**
+	 * Get description
+	 *
+	 * @return string
+	 */
+	public function getDescription()
+	{
+		return $this->description;
+	}
 
-    /**
-     * Set weight
-     *
-     * @param integer $weight
-     *
-     * @return Event
-     */
-    public function setWeight($weight)
-    {
-        $this->weight = $weight;
+	/**
+	 * Set weight
+	 *
+	 * @param integer $weight
+	 *
+	 * @return Event
+	 */
+	public function setWeight($weight)
+	{
+		$this->weight = $weight;
 
-        return $this;
-    }
+		return $this;
+	}
 
-    /**
-     * Get weight
-     *
-     * @return integer
-     */
-    public function getWeight()
-    {
-        return $this->weight;
-    }
-
+	/**
+	 * Get weight
+	 *
+	 * @return integer
+	 */
+	public function getWeight()
+	{
+		return $this->weight;
+	}
 
 	/**
 	 * Sets file.
@@ -186,7 +187,7 @@ class Event
 	/**
 	 * Get file.
 	 *
-	 * @return Uplo adedFile
+	 * @return UploadedFile
 	 */
 	public function getFile()
 	{
@@ -206,7 +207,7 @@ class Event
 		// Сохраняем файл
 		$this->getFile()
 		     ->move(
-			     '/home/virtual/timeline.dev/www/shpatel/web/uploads/cats/' . $this->getId() . '/', //TODO: Разобраться с AppKernel->getRootDir()
+			     '/home/virtual/timeline.dev/www/shpatel/web/uploads/events/' . $this->getCatId() . '/', //TODO: Разобраться с AppKernel->getRootDir()
 			     $this->getFile()
 			          ->getClientOriginalName()
 		     );
@@ -217,7 +218,7 @@ class Event
 			     ->getClientOriginalName()
 		);
 
-		// Очищаем файл
+		// Забываем о файле
 		$this->setFile(null);
 	}
 
