@@ -1,1 +1,13 @@
-Hello World!
+Hello CATS!
+<table>
+    {% for cat in cats %}
+        <tr>
+            <td>
+            {{ cat.id }}
+            </td>
+            <td>
+            {{ cat.name }}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
