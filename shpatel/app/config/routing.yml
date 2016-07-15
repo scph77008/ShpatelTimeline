@@ -3,7 +3,7 @@ timeline:
     prefix:   /
 
 app:
-    resource: "@AppBundle/Controller/"
+    resource: "@TimelineBundle/Controller/"
     type:     annotation
 
 admin:

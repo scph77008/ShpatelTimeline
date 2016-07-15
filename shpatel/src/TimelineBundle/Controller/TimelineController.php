@@ -5,9 +5,12 @@ namespace TimelineBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use TimelineBundle\Entity\Cat;
 
-class DefaultController extends Controller
+class TimelineController extends Controller
 {
-    public function CatsAction()
+	/**
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function CatsAction()
     {
 	    /** @type Cat[] $cats */
 	    $cats = $this->getDoctrine()->getRepository('TimelineBundle:Cat')->findAll();
@@ -19,11 +22,14 @@ class DefaultController extends Controller
 	    }
 	    unset($cat);
 	   
-        return $this->render('TimelineBundle:Default:cats.html.twig', ['cats' => $choices]);
-    }  
-	
+        return $this->render('TimelineBundle:Timeline:cats.html.twig', ['cats' => $choices]);
+    }
+
+	/**
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
 	public function EventsAction()
     {
-        return $this->render('TimelineBundle:Default:events.html.twig');
+        return $this->render('TimelineBundle:Timeline:events.html.twig');
     }
 }
