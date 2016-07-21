@@ -30,6 +30,8 @@ class TimelineController extends Controller
 	 */
 	public function EventsAction()
     {
-        return $this->render('TimelineBundle:Timeline:events.html.twig');
+		$events = $this->getDoctrine()->getRepository('TimelineBundle:Event')->findAll();
+
+        return $this->render('TimelineBundle:Timeline:events.html.twig', ['events' => $events]);
     }
 }

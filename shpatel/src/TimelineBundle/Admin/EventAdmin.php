@@ -24,11 +24,11 @@ class EventAdmin extends AbstractAdmin
 		}
 		unset($cat);
 
-		$formMapper->add('catId', 'choice', ['choices' => $choices])
+		$formMapper->add('catId', 'choice', ['choices' => $choices, 'label' => 'Котик'])
 		           ->add('time', 'datetime')
 		           ->add('file', 'file', ['label' => 'Фото', 'required' => false])
-		           ->add('description', 'text')
-		           ->add('weight', 'integer');
+		           ->add('description', 'text', ['label' => 'Описание', 'required' => false])
+		           ->add('weight', 'integer', ['label' => 'Вес (грамм)', 'required' => false]);
 	}
 
 	protected function configureDatagridFilters(DatagridMapper $datagridMapper)

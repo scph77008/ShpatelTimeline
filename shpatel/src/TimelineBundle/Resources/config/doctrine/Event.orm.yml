@@ -12,14 +12,17 @@ TimelineBundle\Entity\Event:
         catId:
             type: integer
         time:
-            type: time
+            type: datetime
         photo:
             type: string
             length: 255
+            nullable: true
         description:
             type: text
+            nullable: true
         weight:
             type: integer
+            nullable: true
 
     lifecycleCallbacks:
       prePersist:   [ lifecycleFileUpload ]
