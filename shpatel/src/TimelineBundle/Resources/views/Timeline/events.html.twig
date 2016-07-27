@@ -1,1 +1,28 @@
 Hello EVENTS!
+<table>
+    <tr>
+        <th>
+            date
+        </th>
+        <th>
+            weight
+        </th>
+        <th>
+            desc
+        </th>
+    </tr>
+    {% for event in events %}
+        <tr>
+            <td>
+                {{ event.time.date }}
+            </td>
+            <td>
+                {{ event.weight }}
+            </td>
+            <td>
+                {{ event.description }}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+<script src="{{ asset('https://code.highcharts.com/highcharts.js') }}"></script>
