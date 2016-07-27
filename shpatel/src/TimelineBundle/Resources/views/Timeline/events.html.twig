@@ -1,31 +1,7 @@
 Hello EVENTS!
+<body>
 <div id="charts"></div>
-<table>
-    <tr>
-        <th>
-            date
-        </th>
-        <th>
-            weight
-        </th>
-        <th>
-            desc
-        </th>
-    </tr>
-    {% for event in events %}
-        <tr>
-            <td>
-                {{ event.time.date }}
-            </td>
-            <td>
-                {{ event.weight }}
-            </td>
-            <td>
-                {{ event.description }}
-            </td>
-        </tr>
-    {% endfor %}
-</table>
 <script src="{{ asset('//code.jquery.com/jquery-3.1.0.min.js') }}"></script>
-<script src="{{ asset('//code.highcharts.com/highcharts.js') }}"></script>
+<script src="{{ asset('//code.highcharts.com/stock/highstock.js') }}"></script>
 <script src="{{ asset('/js/events.js') }}"></script>
+</body>

@@ -20,16 +20,24 @@ class ApiController extends Controller
 {
 	public function GetDataAction(Request $request)
 	{
+		$jsonContent = '';
 		$entity = $request->get('entity');
 		/** @type TimelineBundle:Cat[] $cats */
-		$cats = $this->getDoctrine()->getRepository('TimelineBundle:' . $entity)->findAll();
+		try
+		{
+			$cats = $this->getDoctrine()->getRepository('TimelineBundle:' . $entity)->findAll();
 
-		$encoders = array(new JsonEncoder());
-		$normalizers = array(new ObjectNormalizer());
-		$serializer = new Serializer($normalizers, $encoders);
+			$encoders = array(new JsonEncoder());
+			$normalizers = array(new ObjectNormalizer());
+			$serializer = new Serializer($normalizers, $encoders);
 
-		$jsonContent = $serializer->serialize($cats, 'json');
+			$jsonContent = $serializer->serialize($cats, 'json');
 
+		}
+		catch(\Exception $e)
+		{
+
+		}
 		return new Response($jsonContent);
 	}
 }
