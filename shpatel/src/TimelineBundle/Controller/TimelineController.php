@@ -14,15 +14,8 @@ class TimelineController extends Controller
     {
 	    /** @type Cat[] $cats */
 	    $cats = $this->getDoctrine()->getRepository('TimelineBundle:Cat')->findAll();
-	
-	    $choices = [];
-	    foreach ($cats as &$cat)
-	    {
-		   $choices[] = ['id' => $cat->getId(), 'name' => $cat->getName()];
-	    }
-	    unset($cat);
-	   
-        return $this->render('TimelineBundle:Timeline:cats.html.twig', ['cats' => $choices]);
+	    
+        return $this->render('TimelineBundle:Timeline:cats.html.twig', ['cats' => $cats]);
     }
 
 	/**
