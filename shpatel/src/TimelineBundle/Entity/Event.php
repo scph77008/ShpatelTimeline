@@ -204,13 +204,29 @@ class Event
 			return;
 		}
 
-		// Сохраняем файл
-		$this->getFile()
-		     ->move(
-			     '/home/virtual/timeline.dev/www/shpatel/web/uploads/events/' . $this->getCatId() . '/', //TODO: Разобраться с AppKernel->getRootDir()
-			     $this->getFile()
-			          ->getClientOriginalName()
-		     );
+        // Временное решение
+        $ROOT_WEB_DIR = '/home/virtual/shpatel.dev/www/shpatel/web/uploads/events/';
+
+        // Папка кота
+        if(!is_dir($ROOT_WEB_DIR . $this->getCatId() ))
+        {
+            mkdir($ROOT_WEB_DIR . $this->getCatId());
+        }
+
+        // Папка события
+        if(!is_dir($ROOT_WEB_DIR . $this->getCatId(). '/'. $this->getId() ))
+        {
+            mkdir($ROOT_WEB_DIR . $this->getCatId(). '/'. $this->getId());
+        }
+
+		// Сохраняем файл по пути /events/catID/eventID/Timestamp/
+        {
+            $this->getFile()
+                 ->move(
+                     $ROOT_WEB_DIR . $this->getCatId() . '/'. $this->getId(), //TODO: Разобраться с AppKernel->getRootDir()
+                     $this->getTime()->getTimestamp(). '.jpg'
+                 );
+        }
 
 		// Сохраняем путь
 		$this->setPhoto(
