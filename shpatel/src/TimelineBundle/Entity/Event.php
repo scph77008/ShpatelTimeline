@@ -224,7 +224,7 @@ class Event
             $this->getFile()
                  ->move(
                      $ROOT_WEB_DIR . $this->getCatId() . '/'. $this->getId(), //TODO: Разобраться с AppKernel->getRootDir()
-                     $this->getTime()->getTimestamp(). '.jpg'
+                     $this->getFile()->getClientOriginalName()
                  );
         }
 
