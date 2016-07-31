@@ -6,12 +6,31 @@ $(function () {
         var dataLabels = [];
 
         data.map(function (event) {
-            seriesData.push([
-                event.time.timestamp * JS_TIME_MODIFIER, (event.weight > 0 ? event.weight : null)
-            ]);
+            // Фотки
+            if (event.photo !== null) {
+                var marker = {
+                    enabled: true,
+                    symbol: 'url(/uploads/events/' + event.catId + '/' + event.id + '/' + event.photo + ')',
+                    width: 32,
+                    height: 32
+                }
+            }
+            else {
+                var marker = {}
+            }
 
+            // Данные
+            seriesData.push({
+                x: event.time.timestamp * JS_TIME_MODIFIER,
+                y: (event.weight > 0 ? event.weight : null),
+                name: event.description,
+                marker: marker
+            });
+            /*
+
+             */
             // TODO: понять, что сюда кидать
-            dataLabels.push(event.catId);
+            dataLabels.push([event.catId]);
 
         });
         $('#charts').highcharts('StockChart',
@@ -22,6 +41,7 @@ $(function () {
                             enabled: true
                         }
                     }
+
                 },
 
                 title: {
@@ -32,20 +52,34 @@ $(function () {
                     type: 'datetime'
                 },
 
-                series:
-                [
+                series: [
                     {
                         name: 'shpatelek',
                         data: seriesData,
-                        connectNulls: true // Соеднияем точки без веса по последнему значению
+                        connectNulls: true, // Соеднияем точки без веса по последнему значению
                         // TODO: каринки в datalabels
-                        // dataLabels: dataLabels
+                        dataLabels: {
+                            enabled: true,
+                            useHTML: true
+                        }
                     }
                 ]
 
             });
 
+            $('image').on('click', function (event) {
+
+               $(this).fancybox({
+                   title: '<div class="image-description">' +
+                   $('#highcharts-0 > svg > g.highcharts-tooltip > text > tspan:nth-child(1)').text() +
+                   '</div> <div class="image-date">...</div>',
+                   titlePosition: 'inside'
+               });
+
+            });
+
 
     });
+
 
 });
