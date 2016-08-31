@@ -28,6 +28,18 @@ timeline_api_cat:
         # Пропускает любое кол-во цифр или 'all'
         id: '(\d+|all)'
 
+timeline_api_event_by_cat:
+    # По пути с любым ID или all
+    path:  /api/event/cat/{id}/
+    path:  /api/event/cat/{id}
+    # Направляем в метод
+    defaults: { _controller: TimelineApiBundle:Event:getByCat, _format: ~ }
+    # И передаём ID
+    requirements:
+        _method: GET
+        # Пропускает любое кол-во цифр или 'all'
+        id: '(\d+)'
+
 #TODO later
 timeline_api_event:
     path:  /api/event/
