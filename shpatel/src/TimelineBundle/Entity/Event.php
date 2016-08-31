@@ -205,7 +205,7 @@ class Event
 		}
 
         // Временное решение
-        $ROOT_WEB_DIR = '/home/virtual/shpatel.dev/www/shpatel/web/uploads/events/';
+        $ROOT_WEB_DIR = '/home/virtual/timeline.dev/www/shpatel/web/uploads/events/';
 
         // Папка кота
         if(!is_dir($ROOT_WEB_DIR . $this->getCatId() ))

@@ -1,5 +1,5 @@
 <?php
-
+namespace TimelineBundle;
 use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\Route;
 
@@ -17,8 +17,5 @@ $collection->add('events', new Route('/events', array(
 	'_controller' => 'TimelineBundle:Timeline:Events',
 )));
 
-$collection->add('api', new Route('/api/', array(
-	'_controller' => 'TimelineBundle:Api:GetData',
-)));
 
 return $collection;

@@ -14,3 +14,21 @@ _sonata_admin:
     resource: .
     type: sonata_admin
     prefix: /admin
+
+# API
+timeline_api_cat:
+    # По пути с любым ID или all
+    path:  /api/cat/{id}/
+    path:  /api/cat/{id}
+    # Направляем в метод
+    defaults: { _controller: TimelineApiBundle:Cat:get, _format: ~ }
+    # И передаём ID
+    requirements:
+        _method: GET
+        # Пропускает любое кол-во цифр или 'all'
+        id: '(\d+|all)'
+
+#TODO later
+timeline_api_event:
+    path:  /api/event/
+    defaults: { _controller: TimelineApiBundle:Event:Route, _format: ~ }
