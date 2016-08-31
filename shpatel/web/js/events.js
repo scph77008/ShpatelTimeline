@@ -1,10 +1,8 @@
 $(function () {
-    const JS_TIME_MODIFIER = 1000;
-
-    $.getJSON('/app_dev.php/api/?entity=Event', function (data) {
+    var JS_TIME_MODIFIER = 1000;
+    $.getJSON('/app_dev.php/api/cat/1/', function (data) {
         var seriesData = [];
         var dataLabels = [];
-
         data.map(function (event) {
             // Фотки
             if (event.photo !== null) {
@@ -13,12 +11,11 @@ $(function () {
                     symbol: 'url(/uploads/events/' + event.catId + '/' + event.id + '/' + event.photo + ')',
                     width: 32,
                     height: 32
-                }
+                };
             }
             else {
-                var marker = {}
+                var marker = {};
             }
-
             // Данные
             seriesData.push({
                 x: event.time.timestamp * JS_TIME_MODIFIER,
@@ -31,55 +28,42 @@ $(function () {
              */
             // TODO: понять, что сюда кидать
             dataLabels.push([event.catId]);
-
         });
-        $('#charts').highcharts('StockChart',
-            {
-                plotOptions: {
-                    line: {
-                        dataLabels: {
-                            enabled: true
-                        }
+        $('#charts').highcharts('StockChart', {
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
                     }
-
-                },
-
-                title: {
-                    text: 'CATS! '
-                },
-
-                xAxis: {
-                    type: 'datetime'
-                },
-
-                series: [
-                    {
-                        name: 'shpatelek',
-                        data: seriesData,
-                        connectNulls: true, // Соеднияем точки без веса по последнему значению
-                        // TODO: каринки в datalabels
-                        dataLabels: {
-                            enabled: true,
-                            useHTML: true
-                        }
+                }
+            },
+            title: {
+                text: 'CATS! '
+            },
+            xAxis: {
+                type: 'datetime'
+            },
+            series: [
+                {
+                    name: 'shpatelek',
+                    data: seriesData,
+                    connectNulls: true,
+                    // TODO: картинки в datalabels
+                    dataLabels: {
+                        enabled: true,
+                        useHTML: true
                     }
-                ]
-
+                }
+            ]
+        });
+        $('image').on('click', function (event) {
+            $(this).fancybox({
+                title: '<div class="image-description">' +
+                    $('#highcharts-0 > svg > g.highcharts-tooltip > text > tspan:nth-child(1)').text() +
+                    '</div> <div class="image-date">...</div>',
+                titlePosition: 'inside'
             });
-
-            $('image').on('click', function (event) {
-
-               $(this).fancybox({
-                   title: '<div class="image-description">' +
-                   $('#highcharts-0 > svg > g.highcharts-tooltip > text > tspan:nth-child(1)').text() +
-                   '</div> <div class="image-date">...</div>',
-                   titlePosition: 'inside'
-               });
-
-            });
-
-
+        });
     });
-
-
 });
+//# sourceMappingURL=events.js.map
