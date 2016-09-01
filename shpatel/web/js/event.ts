@@ -1,5 +1,6 @@
 /**
  * Cобытие, пришедшее из API
+ * Описательный класс
  * Created by andrey on 31.08.16.
  */
 function Event(event)

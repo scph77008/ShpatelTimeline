@@ -1,5 +1,6 @@
 /**
  * Кот, пришедший из API
+ * Описательный класс
  * Created by andrey on 31.08.16.
  */
 function Cat(cat)
